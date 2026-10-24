@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+:root {
+  --bg-app: #F4F1FA;
+  --color-ink: #1C1B29;
+  --color-muted: #5B5970;
+  --color-surface: #E3DEF8;
+  --color-card: #FFFFFF;
+  --card-border: #E8E3F3;
+  --nav-bg: #FFFFFF;
+  --nav-border: #E8E3F3;
+}
+
+[data-theme="dark"], .dark {
+  --bg-app: #12111D;
+  --color-ink: #FAF8FF;
+  --color-muted: #A8A5BD;
+  --color-surface: #2B2744;
+  --color-card: #1E1C2E;
+  --card-border: #2F2C46;
+  --nav-bg: #1A1829;
+  --nav-border: #2D2A45;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-app);
+    color: var(--color-ink);
+    font-family: var(--font-figtree), system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+}
+
+/* Bulletproof Theme Classes using CSS Custom Properties */
+.app-card {
+  background-color: var(--color-card) !important;
+  border: 1px solid var(--card-border) !important;
+  color: var(--color-ink) !important;
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+
+.app-surface {
+  background-color: var(--color-surface) !important;
+  border: 1px solid var(--card-border) !important;
+  color: var(--color-ink) !important;
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+
+.app-text-ink {
+  color: var(--color-ink) !important;
+}
+
+.app-text-muted {
+  color: var(--color-muted) !important;
+}
+
+.app-nav {
+  background-color: var(--nav-bg) !important;
+  border-color: var(--nav-border) !important;
+  transition: background-color 200ms ease, border-color 200ms ease;
+}
+
+/* Iconic Hero Card: Always dark ink #1C1B29 in both light and dark mode per design brief */
+.hero-card {
+  background-color: #1C1B29 !important;
+  border: 1px solid #3A3856 !important;
+  color: #F4F1FA !important;
+}
+
+/* Smooth motion respecting prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Subtle transitions for buttons and cards */
+.interactive-tap {
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+.interactive-tap:active {
+  transform: scale(0.97);
+}
+
+/* Custom scrollbar hiding for clean app feel */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
